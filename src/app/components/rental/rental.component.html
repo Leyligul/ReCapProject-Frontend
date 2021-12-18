@@ -1,0 +1,33 @@
+
+<table class="table table-dark table-striped">
+    <thead>
+  
+        <tr>
+           
+            <th>Brand</th>
+            <th>Customer</th>
+            <th>Rent-Date</th>
+            <th>Return-Date</th>
+          
+        </tr>
+    </thead>
+    <tbody> 
+    <tr *ngFor="let rental of rentals">
+      
+        <td>{{rental.brandName}}</td>
+        <td>{{rental.firstAndLastName}}</td>
+        <td>{{rental.rentDate}}</td>
+        <td>{{rental.returnDate}}</td>
+        
+    </tr>
+   </tbody> 
+  </table>
+  
+  
+   <!-- <ul class="list group">
+       <li *ngFor="let rental of rentals" class="list-group-item">{{rental.brandName}}</li>
+       <li *ngFor="let rental of rentals" class="list-group-item">{{rental.firstAndLastName}}</li>
+       <li *ngFor="let rental of rentals" class="list-group-item">{{rental.rentDate}}</li>
+       <li *ngFor="let rental of rentals" class="list-group-item">{{rental.returnDate}}</li>
+   </ul>
+   -->
