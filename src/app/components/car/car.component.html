@@ -1,25 +1,119 @@
+<!-- 
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+
+        <select name="cars" id="cars">
+            <option  *ngFor="let car of cars" value="{{car.carId}}">{{car.carName }}</option>
+         </select>
+         <select style="padding: -30px;" name="cars" id="cars">
+            <option  *ngFor="let car of cars" value="{{car.carId}}">{{car.carName }}</option>
+         </select>
+       <button class="btn btn-success">  filter</button>
+       <button class="btn btn-danger">Temizle</button>
+      <div class="d-flex">
+        <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="car name">
+      </div>
+    </div>
+  </nav> -->
 
 
-<table class="table table-dark table-striped">
+
+<!-- <div class="row">
+
+
+
+<div  class=" col-3">
+    <label for="exampleFormControlInput1" class="form-label">Find</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="car name">
+  </div>
+<div *ngIf="filterText.length>2" class="alert alert-success">
+{{filterText}} 
+</div>
+</div>
+ -->
+
+
+<!--
+
+<table class="table">
     <thead>
   
         <tr>
            
             <th>Car</th>
-            <th>Model Year</th>
+            <!-- <th>Model Year</th>
             <th>Daily Price</th>
-            <th>Description</th>
+            <th>Description</th> 
+            <th></th>
+            <th></th>
+          
           
         </tr>
     </thead>
     <tbody> 
-    <tr *ngFor="let car of cars">
+    <tr 
+
+     *ngFor="let car of cars | filterPipe:filterText"  >
         
-        <td>{{car.carName}}</td>
-        <td>{{car.modelYear}}</td>
+        <td>{{car.carName }}</td>
+        <!-- <td>{{car.modelYear}}</td>
         <td>{{car.dailyPrice}}</td>
-        <td>{{car.description}}</td>
+        <td>{{car.description}}</td> 
+        <td><button (click)="setCurrentCar(car)"
+    
+            routerLink="/cardetails/car/{{car.carId}}" 
+            [class]="getAllCarDetailClass(car)" class="btn btn-danger">Details</button></td>
+        <td><button (click)="addToCart(car)" class="btn btn-success">Add To Cart</button></td>
+        
     </tr>
    </tbody> 
   </table>
-  
+-->
+
+
+
+<div class="panel panel-default">
+  <div class="panel-heading" style="background-color: #ffe6c4ab; padding: 15px; border-radius: 15px;">
+
+    <div class="input-group mb-3">
+      <input type="text" [(ngModel)]="filterText" id="filterText" class="form-control" placeholder="Enter Car Name">
+      <select #selectBrand (change)="setBrandId(selectBrand.value)" class="form-select">
+        <option *ngFor="let brand of brands" value="{{brand.brandId}}">{{brand.brandName}}</option>
+      </select>
+
+      <select #selectColor (change)="setColorId(selectColor.value)" class="form-select">
+        <option *ngFor="let color of colors " value="{{color.colorId}}">{{color.colorName}}</option>
+      </select>
+      <button routerLink="/cardetails/car/{{selectBrand.value}}/{{selectColor.value}}" class="btn btn-outline-success"
+        type="button" id="button-addon2">Filter</button>
+
+
+    </div>
+
+
+
+
+  </div>
+
+  <div class="panel-body">
+
+    <div class="row ">
+      <div *ngFor="let car of cars | filterPipe:filterText" style="margin:10px" class="card col-3 text-center ">
+
+        <div class="card-body">
+          <h5 class="card-title">{{car.carName }}</h5>
+          <button (click)="setCurrentCar(car)" routerLink="/cardetails/car/{{car.carId}}"
+            [class]="getAllCarDetailClass(car)" class="btn btn-danger">Details</button>
+
+          <button (click)="addToCart(car)" class="btn btn-success">Add To Cart</button>
+
+          <button (click)="setCurrentCar(car)" routerLink="/cars/update/{{car.carId}}"
+            [class]="getAllCarDetailClass(car)" class="btn btn-primary">Update</button>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -17,14 +17,40 @@
   </tr>
  </tbody> 
 </table>  -->
-<ul class="list group">
-    <li  (click)="allCarsActive()"
-    routerLink="/cars" [class]="getAllCarsClass()"> ALL BRANDS </li>
-    <li (click)="setCurrentBrand(brand)"
-    routerLink="/cars/brand/{{brand.brandId}}"
-    *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>
- 
-</ul> 
-<h5 *ngIf="currentBrand">{{currentBrand.brandName}} seçtiniz.
-</h5>
 
+<!-- <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Find</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="brand name">
+  </div>
+<div *ngIf="filterText.length>2" class="alert alert-success">
+{{filterText}} 
+</div> -->
+
+
+
+<!-- <h5 *ngIf="currentBrand">{{currentBrand.brandName}} seçtiniz.
+</h5>  -->
+
+<div class="accordion-item">
+   
+
+  <div class="accordion-body">
+      <div class="mb-3">
+      <label for="filterText" class="form-label">Brand Search</label>
+      
+      <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Search for a brand">
+      </div>
+
+
+ <ul style="padding: 0;" class="list-group">
+    
+    <li (click)=" setCurrentAllBrand()" 
+    routerLink=""  [class]= "getCurrentAllBrandClass()">ALL BRANDS</li>
+    <li (click)="setCurrentBrand(brand)" 
+    routerLink="/cars/brand/{{brand.brandId}}"
+    *ngFor="let brand of brands | filterbrand:filterText"  [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>
+ </ul>  
+
+
+</div>
+</div>

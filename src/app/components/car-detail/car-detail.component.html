@@ -2,30 +2,48 @@
     <span class="visually-hidden">Loading...</span>
   </div> -->
 
-
-  <table class="table table-dark table-striped">
-    <thead>
   
-        <tr>
-           
-          <th>Car</th>
-          <th>Brand</th>
-          <th>Color</th>
-          <th>Daily Price</th>
-          <th>Description</th>
-          
-        </tr>
-    </thead>
-    <tbody> 
-      <tr *ngFor="let cardetail of carDetails" >
-        <td>{{ cardetail.carName }}</td>
-        <td>{{ cardetail.brandName }}</td>
-        <td>{{ cardetail.colorName }}</td>
-        <td>{{ cardetail.dailyPrice}}</td>
-        <td>{{ cardetail.description }}</td>
-      
+<table class="table">
+  <thead>
+
+    <tr>
+
+      <th>Car</th>
+      <th>Brand</th>
+      <th>Color</th>
+      <th>Daily Price</th>
+      <th>Price(+VAT)</th>
+      <th>Description</th>
+      <th></th>
+     
+
     </tr>
-   </tbody> 
-  </table>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cardetail of carDetails">
+      <td>{{ cardetail.carName }}</td>
+      <td>{{ cardetail.brandName }}</td>
+      <td>{{ cardetail.colorName }}</td>
+      <td>{{ cardetail.dailyPrice}}</td>
+      <td>{{ cardetail.dailyPrice |vatAdded:10 | currency}}</td>
+      <td>{{ cardetail.description }}</td>
+      <td><button 
+              
+        routerLink="/rentals/{{cardetail.carId}}"
+        class="btn btn-success">Rent</button></td>
+     
+ 
+    </tr>
+  </tbody>
+</table>
 
+
+
+
+ <app-car-image>
   
+</app-car-image>  
+
+
+
+

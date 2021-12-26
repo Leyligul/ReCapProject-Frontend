@@ -1,0 +1,108 @@
+<div class="content">
+
+    <table class="table">
+        <thead>
+
+            <tr>
+
+                <th>Car</th>
+                <th>Brand</th>
+                <th>Color</th>
+                <th>Daily Price</th>
+                <th>Price(+VAT)</th>
+                <th>Description</th>
+                <th></th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ cardetail.carName }}</td>
+                <td>{{ cardetail.brandName }}</td>
+                <td>{{ cardetail.colorName }}</td>
+                <td>{{ cardetail.dailyPrice}}</td>
+                <td>{{ cardetail.dailyPrice |vatAdded:10 | currency}}</td>
+                <td>{{ cardetail.description }}</td>
+
+
+
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+    <app-car-image>
+
+    </app-car-image>
+
+
+    <div class="content">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">UpDate Car</h5>
+                </div>
+
+                <div class="card-body">
+                    <form [formGroup]="carUpDateForm">
+                        <div class="mb-3">
+                            <label for="carName">Car Name</label>
+                            <div class="form-group">
+                                <input type="text" id="carName" formControlName="carName" class="form-control"
+                                    placeholder="Car Name" />
+                            </div>
+                        </div>
+                        <div class="mb-3"><label for="brandId">Brand</label>
+
+                            <select #brandId (change)="setBrandId(brandId.value)" class="form-select"
+                                formControlName="brandId">
+                                <option *ngFor="let brand of brands" value="{{brand.brandId}}">{{brand.brandName}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="md-3"><label for="colorId">Color</label>
+
+                            <select #colorId (change)="setColorId(colorId.value)" class="form-select"
+                                formControlName="colorId">
+                                <option *ngFor="let color of colors" value="{{color.colorId}}">{{color.colorName}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="md-3"><label for="modelYear">Model Year</label>
+                            <div class="form-group">
+                                <input type="text" id="modelYear" formControlName="modelYear" class="form-control"
+                                    placeholder="Model Year" />
+                            </div>
+                        </div>
+                        <div class="md-3"> <label for="dailyPrice">Daily Price</label>
+                            <div class="form-group">
+                                <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control"
+                                    placeholder="Daily PRice" />
+                            </div>
+                        </div>
+
+                        <div class="md-3"> <label for="description">Description</label>
+                            <div class="form-group">
+                                <input type="text" id="description" formControlName="description" class="form-control"
+                                    placeholder="Description" />
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-success" (click)="upDateCar()"> UpDate </button>
+            </div>
+
+
+        </div>
+    </div>
+</div>

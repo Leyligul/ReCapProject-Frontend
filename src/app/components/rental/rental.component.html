@@ -1,4 +1,4 @@
-
+<!-- 
 <table class="table table-dark table-striped">
     <thead>
   
@@ -22,12 +22,66 @@
     </tr>
    </tbody> 
   </table>
-  
-  
-   <!-- <ul class="list group">
+   -->
+
+<!-- <ul class="list group">
        <li *ngFor="let rental of rentals" class="list-group-item">{{rental.brandName}}</li>
        <li *ngFor="let rental of rentals" class="list-group-item">{{rental.firstAndLastName}}</li>
        <li *ngFor="let rental of rentals" class="list-group-item">{{rental.rentDate}}</li>
        <li *ngFor="let rental of rentals" class="list-group-item">{{rental.returnDate}}</li>
    </ul>
    -->
+
+<!-- <div class="row">
+    <div>
+        <label for="currentDate" class="form-label">
+            <h1 class="display-6"></h1>
+        </label>
+        <input type="text" [(ngModel)]="currentDate" class="form-control" id="currentDate"
+            placeholder="(from) yyyy-mm-dd" />
+    </div>
+    <div>
+        <label for="returnDate" class="form-label">
+            <h1 class="display-6"></h1>
+        </label>
+        <input type="text" [(ngModel)]="returnDate" class="form-control" id="currentDate"
+            placeholder="(to) yyyy-mm-dd" />
+    </div>
+    <div class="text-center">
+        <input (click)="CheckRental()" [routerLinkActive]=paymentredirection class="btn btn-primary" type="submit"
+            routerLink="/payments" value="Continue">
+    </div>
+
+</div>
+ -->
+
+
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+           
+
+            <div class="card-body">
+                <form [formGroup]="rentalDateForm">
+                    <div class="mb-3">
+                        <label for="rentDate">Rent Date</label>
+                        <div class="form-group">
+                            <input type="datetime" id="rentDate" formControlName="rentDate" class="form-control"
+                            placeholder="yyyy-mm-dd" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rentDate">Return Date</label>
+                        <div class="form-group">
+                            <input type="datetime" id="returnDate" formControlName="returnDate" class="form-control"
+                            placeholder="yyyy-mm-dd" />
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-fill btn-primary"  (click)="checkReturnDate()">Continue</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

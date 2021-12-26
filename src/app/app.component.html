@@ -10,29 +10,25 @@ Huhu
 </ul> -->
 
 <div class="container">
-   <app-navi></app-navi>
+  <app-navi></app-navi>
+  
   <div class="row">
-    <div class="col-md-4">
-      <app-brand></app-brand>
-    </div>
 
-      <!-- <div class=col-md-7>
-       <app-cardetail></app-cardetail>
-    </div> -->
+  <!-- <div  class= "col-md-2">   
+  <app-brand></app-brand>
+  </div>
+     -->
+  <div class="col-md-3">
+<app-left-menu></app-left-menu>
+  </div>
+  <div  class= "col-md-9">   
+      <router-outlet></router-outlet>
+  </div>
+ 
+  <!-- <app-color></app-color> -->
 
   
-   <!-- <div class="col-md-2">
-    <app-customer></app-customer> 
-   </div>
-   <app-rental></app-rental> 
-   
-  </div>   -->
-  <div class=col-md-8><router-outlet>
-    </router-outlet>
+ 
+
+
   </div>
-
-  <app-color></app-color> 
-
-</div>
-
-

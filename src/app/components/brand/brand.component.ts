@@ -12,7 +12,11 @@ import { BrandService } from 'src/app/services/brand.service';
 export class BrandComponent implements OnInit {
    brands:Brand[]=[];
    currentBrand:Brand;
-   activeAllCars:boolean=false;
+   currentBrandAll=false;
+ 
+   filterText="";
+   
+   
    
   constructor(private brandService:BrandService) { }
 
@@ -30,19 +34,17 @@ export class BrandComponent implements OnInit {
   }
 
   setCurrentBrand(brand:Brand){
+   
    // console.log(brand.brandName)
    this.currentBrand=brand;
   }
    
-  allCarsActive(){
-    this.activeAllCars=true;
-
-  }
+ 
 
   
   
   getCurrentBrandClass(brand:Brand){
-    this.activeAllCars=false;
+    
     if(brand==this.currentBrand){
       
       return "list-group-item active"
@@ -52,22 +54,26 @@ export class BrandComponent implements OnInit {
     }
   }
 
-
-
-  getAllCarsClass(){
-  //   if(!this.currentBrand){
-  //     return "list-group-item active"
-  //   }
-  //   else{
+  setCurrentAllBrand(){
+   
+    this.currentBrandAll=true;
+   
+    
+   }
+ 
+  getCurrentAllBrandClass(){
+   
+    if(this.currentBrandAll===true){
       
-  //     return "list-group-item "
-  //   }
-  // }
-
-  if(this.activeAllCars==false){
-    return "list-group-item"
-  }else{
-    return "list-group-item active"
+      return "list-group-item active"
+     
+    }else{
+      
+      return "list-group-item"
+    }
   }
- }
+
+
+  
+ 
 }
