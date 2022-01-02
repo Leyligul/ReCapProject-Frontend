@@ -1,0 +1,30 @@
+<body>
+    <main class="form-register">
+        <form [formGroup]="UserUpDateForm">
+            <h1 class="h3 mb-3 fw-normal">UpDate</h1>
+    
+            <div class="form-floating">
+                <input formControlName="mail" type="email" class="form-control" id="mail"
+                    placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+    
+            <div class="form-floating">
+                <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="First Name">
+                <label for="FirstName">First Name</label>
+            </div>
+            <div class="form-floating">
+                <input formControlName="lastName" type="text" class="form-control" id="LastName" placeholder="Last Name">
+                <label for="lastName">Last Name</label>
+            </div>
+            <div class="form-floating">
+                <input formControlName="password" type="password" class="form-control" id="password" placeholder="password">
+                <label for="password">Password</label>
+            </div>
+            
+            
+            <button (click)="upDateUser()" class="w-100 btn btn-lg btn-primary" type="submit">UpDate</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+        </form>
+    </main>
+    </body>

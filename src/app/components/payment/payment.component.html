@@ -28,24 +28,57 @@
 
  -->
 
+ <div class="content">
+  <div class="col-md-12">
+      <div class="card">
+         
 
- <div>
+          <div class="card-body">
+              <form [formGroup]="rentalDateForm">
+                  <div class="mb-3">
+                      <label for="rentDate">Rent Date</label>
+                      <div class="form-group">
+                          <input type="datetime" id="rentDate" formControlName="rentDate" class="form-control"
+                          placeholder="yyyy-mm-dd" />
+                      </div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="rentDate">Return Date</label>
+                      <div class="form-group">
+                          <input type="datetime" id="returnDate" formControlName="returnDate" class="form-control"
+                          placeholder="yyyy-mm-dd" />
+                      </div>
+                  </div>
+                  <div class="card-footer">
+                      <button class="btn btn-fill btn-primary"  (click)="checkRentDate()">Check Date</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div> 
+
+
+ <form [formGroup]="cardForm" *ngIf="activeForm">
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Name on Card : </label>
-    <input type="text" class="form-control"  aria-describedby="nameoncard">
+   
+    <label for="nameOnCard" class="form-label">Name on Card : </label>
+    <input type="text" class="form-control" id="nameOnCard" aria-describedby="nameoncard" formControlName="nameOnCard">
 
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Card Number: </label>
-    <input type="text" class="form-control" >
+    <input type="text" class="form-control" formControlName="cardNumber">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Cvv: </label>
-    <input type="text" class="form-control" >
+    <input type="text" class="form-control" formControlName="cvv">
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Valid Date: </label>
-    <input type="text" class="form-control" >
+    <label for="exampleInputPassword1" class="form-label" >Valid Date: </label>
+    <input type="datetime" class="form-control" formControlName="validDate"  placeholder="yyyy-mm-dd" >
   </div>
-  <button (click)="Pay()" routerLink="" type="submit" class="btn btn-primary">Pay</button>
-</div>
+  <button (click)="Pay()" type="submit" class="btn btn-primary">Pay</button>
+</form>
+
+

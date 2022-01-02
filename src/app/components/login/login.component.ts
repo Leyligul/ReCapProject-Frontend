@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms";
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,12 +11,18 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  isLogin:boolean;
+  
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
-    private toastrService: ToastrService) { }
+    private toastrService: ToastrService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.createLoginForm();
+    this.isLogin=this.authService.isAuthenticated();
+   
+    
   }
   createLoginForm() {
     this.loginForm = this.formBuilder.group({
@@ -30,24 +37,32 @@ export class LoginComponent implements OnInit {
 
       let loginModel = Object.assign({}, this.loginForm.value)
       this.authService.login(loginModel).subscribe(response => {
-        this.toastrService.info(response.message)
-        //console.log(data)})
+        this.toastrService.success("Başarılı Giriş.")
+        console.log(response.data)
         localStorage.setItem("token", response.data.token)
+        this.router.navigate(['/cars'], {});
 
 
       }, responseError => {
-           //console.log(responseError)
-           this.toastrService.error(responseError.error);
-           
+        //console.log(responseError)
+        this.toastrService.error(responseError.error);
+       
+
       })
     }
 
 
 
+    else {
+      this.toastrService.error("Formdaki tüm alanları doldurunuz.")
+      
+    }
 
 
 
   }
+
+ 
 
 
 }

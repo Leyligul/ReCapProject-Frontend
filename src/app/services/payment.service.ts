@@ -13,9 +13,9 @@ url="http://localhost:5850/api/";
   constructor(private httpClient:HttpClient) { }
 
 
-  pay():Observable<ResponseModel>{
+  pay(card:Card):Observable<ResponseModel>{
     let newPath=this.url+"Payments/pay";
-    return this.httpClient.get<ResponseModel>(newPath);
+    return this.httpClient.post<ResponseModel>(newPath,card);
  
   }
 }

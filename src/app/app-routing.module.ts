@@ -13,6 +13,9 @@ import { ColorComponent } from './components/color/color.component';
 import { LoginComponent } from './components/login/login.component';
 
 import { PaymentComponent } from './components/payment/payment.component';
+import { ProfileUpdateComponent } from './components/profile-update/profile-update.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -34,8 +37,17 @@ const routes: Routes = [
   {path:"colors/add" , component:ColorAddComponent},
   {path:"brands/add" , component:BrandAddComponent},
   {path:"cars/update/:carId" , component:CarUpdateComponent},
-  {path:"rentals/add" , component:RentalComponent},
+ // {path:"rentals/add" , component:RentalComponent},
   {path:"login" , component:LoginComponent},
+  {path:"register" , component:RegisterComponent},
+  {path:"cars",component:CarComponent},
+  {path:"profile",component:ProfileComponent},
+  {path:"updateProfile/:userId",component:ProfileUpdateComponent},
+  
+
+  
+
+ 
  
 
   

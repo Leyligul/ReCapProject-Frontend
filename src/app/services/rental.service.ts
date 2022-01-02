@@ -28,9 +28,20 @@ export class RentalService {
     return this.httpClient.post<ResponseModel>(newPath,rental);
   }
 
-  checkReturnDate(carId:number):Observable<ResponseModel>{
-    let newPath=this.apiUrl+"Rentals/checkreturndate?carId="+carId
-    return this.httpClient.get<ResponseModel>(newPath);
-  }
+  // checkReturnDate(carId:number):Observable<ResponseModel>{
+  //   let newPath=this.apiUrl+"Rentals/checkreturndate?carId="+carId
+  //   return this.httpClient.get<ResponseModel>(newPath);
+  // }
+   
+   checkRentDate(carId:number,rentDate:Date,returnDate:Date){
+     let newPath=this.apiUrl+"Rentals/checkrentdate?carId="+carId+"&rentDate="+rentDate + "&returnDate=" + returnDate;
+     return this.httpClient.get<ResponseModel>(newPath);
+     
+   }
+
+  
+
+
+
 
 }

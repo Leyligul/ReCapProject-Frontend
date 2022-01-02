@@ -5,7 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import{FormsModule,ReactiveFormsModule} from "@angular/forms";
 import{BrowserAnimationsModule} from "@angular/platform-browser/animations"; 
-import { DatePipe } from '@angular/common';
+import { JwtModule } from "@auth0/angular-jwt";
+
 
 
 import { BrandComponent } from './components/brand/brand.component';
@@ -32,10 +33,15 @@ import { BrandUpdateComponent } from './components/brand-update/brand-update.com
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileUpdateComponent } from './components/profile-update/profile-update.component';
 
 
 
-
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}
 
 @NgModule({
   declarations: [
@@ -63,6 +69,9 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
        BrandUpdateComponent,
        CarUpdateComponent,
        LoginComponent,
+       RegisterComponent,
+       ProfileComponent,
+       ProfileUpdateComponent,
     
     
    
@@ -77,11 +86,17 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     ReactiveFormsModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
-    })
+    }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["http://localhost:4200/"]
+      },
+    }),
   ],
   providers: [
-    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
-    {provide:DatePipe}
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+    
   ],
   bootstrap: [AppComponent]
 })
