@@ -83,7 +83,7 @@ export class PaymentComponent implements OnInit {
 
 
         } else {
-          this.toastrService.success("Tarihler mük")
+          this.toastrService.success("Tarihler uygun seçildi.")
           this.user = this.authService.getUserInfoByToken();
            
     
@@ -160,14 +160,14 @@ export class PaymentComponent implements OnInit {
           if (confirm('Kart bilgileriniz kayıt edilsin mi ?')) {
             // Save it!
             this.cardService.addCard(cardModel).subscribe(response => {
-              console.log(response)
+              //console.log(response)
 
             })
           } else {
             // Do nothing!
 
 
-            console.log('reddediyruk');
+            //console.log('');
           }
         }
 
@@ -186,7 +186,7 @@ export class PaymentComponent implements OnInit {
         else {
           // console.log(responseError.error.Errors)
           this.toastrService.error(responseError)
-          //burası business hatası. Validator message dşönmez çünkü
+          //burası business hatası. Validator message dönmez çünkü
         }
 
 
